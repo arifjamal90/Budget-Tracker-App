@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Bugdet Tracker App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="bugdet">
+        <h1>Budget Tracker App</h1>
+        <div class="showDeatails">
+          <div class="Totalamount" id="totalAmount">Total Amount :</div>
+          <div class="Totalamount" id="remainingAmount">Remaining Amount :</div>
+          <div class="Totalamount" id="expensesAmount">Total Expenses Amout : </div>
+        </div>
+      </div>
+      <form action="">
+        <label for="">Total Amount:</label>
+        <button class="totalBtn">Add Total Amount</button>
+        <input
+          type="number"
+          placeholder="Enter Your Amount"
+          class="totalInputData"
+        />
+        <label for="">Spend Amount:</label>
+        <input
+          type="number"
+          placeholder="Enter Your Amount"
+          class="inputData"
+        />
+
+        <label for="">Category:</label>
+        <select class="select">
+          <option value="cloth">Clothes</option>
+          <option value="food">Food</option>
+          <option value="shoes">Shoes</option>
+          <option value="bodyPerfume">Body Perfume</option>
+          <option value="Shoppig">Shoping</option>
+          <option value="EnterTainment">EnterTainment</option>
+        </select>
+        <label for="">Date:</label>
+        <input type="date" placeholder="Enter Date" class="dateee" />
+        <button class="AddExpenses">Add Expenses</button>
+        <button class="updateed" >Update</button>
+      </form>
+    </div>
+    <div class="storeData">
+      <h1 class="head1">Expenses</h1>
+      <div class="searchBox">
+      <input type="search" placeholder="Search Here " class="searchItem" onkeyup="filterItem()">
+        
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th id="amountsorte">Amount</th>
+            <th>
+
+              <select class="selecttedd">
+                <option value="category" class="optiondata">Category</option>
+                <option value="clothes">Clothes</option>
+                <option value="food">Food</option>
+                <option value="shoes">Shoes</option>
+                <option value="bodyperfume">Body Perfume</option>
+                <option value="shoping">Shopping</option>
+                <option value="entertainment">EnterTainment</option>
+              </select>
+            </th>
+          
+            <th >Date <input type="date" id="datefilter" ></th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+
+          
+       
+          </tr>
+        </tbody>
+      
+      </table>
+    </div>
+  </body>
+</html>
+
+
