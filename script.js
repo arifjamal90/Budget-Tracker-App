@@ -11,6 +11,8 @@ const totalAddBtn = document.querySelector(".totalBtn");
 const expenseTable = document.querySelector(".table");
 const tableTr = document.querySelector(".tableRow")
 const tableBody = document.querySelector(".tbody")
+const selectElement = document.getElementById("inputCreate");
+const selectedOption= document.querySelector(".selecttedd")
 console.log(updateBtn, 'asim');
 let tasks = [];
 let totalExpenses = 0;
@@ -18,8 +20,61 @@ let ascending = true;
 
 // operation start here-----------------------------------------
 
+
+selectElement.addEventListener("change", function() {
+  if (this.value === "addClothe") {
+
+    const inputField = document.createElement("input");
+    inputField.classList.add("inputfiled");
+    inputField.setAttribute("type", "text");
+    inputField.setAttribute("placeholder", "Enter clothes");
+    
+    
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add";
+    addButton.classList.add("addButton");
+
+    addButton.addEventListener("click", (e)=>{
+     e.preventDefault();
+
+     const myoption = document.createElement("option");
+     myoption.classList.add("option")
+     myoption.textContent=inputField.value;
+
+     selectElement.appendChild(myoption);
+
+     const myoption2 = document.createElement("option");
+     myoption2.classList.add("option");
+     myoption2.textContent=inputField.value;
+     
+    selectedOption.appendChild(myoption2);
+     
+     
+      inputField.style.display= "none";
+      addButton.style.display='none'
+     console.log(selectElement,'hahhahahahah');
+    })
+  
+
+    const containerDiv = document.createElement("div");
+    containerDiv.classList.add("inputContainer");
+    containerDiv.appendChild(inputField);
+    containerDiv.appendChild(addButton);
+
+  
+    selectElement.parentNode.insertBefore(containerDiv, selectElement.nextSibling);
+  }
+});
+
+
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  const remainingAmount = parseFloat(remainingAmountDisplay.textContent.split(":")[1]);
+
+  if (remainingAmount <= 0) {
+    alert("Please add more funds before adding expenses.");
+    return;
+  }
 
   const inputFieldSpend = parseFloat(document.querySelector(".inputData").value);
   const inputSelect = document.querySelector(".select").value;
@@ -49,6 +104,8 @@ addBtn.addEventListener("click", (e) => {
       </button>
     </td>
   `;
+
+
   tableBody.appendChild(newRow)
 
   const innerValue = newRow.innerText;
@@ -83,14 +140,14 @@ function updateRemainingAmount() {
   const totalAmount = parseFloat(totalAmountDisplay.textContent.split(":")[1]);
   const remainingAmount = totalAmount - totalExpenses;
   remainingAmountDisplay.textContent = `Remaining Amount is: ${remainingAmount}`;
-
-  if (remainingAmount < 100) {
-    const message = document.createElement("h5");
-    message.classList.add("remainingAlert");
-    message.textContent = "Your amount is below 100!!!";
-    remainingAmountDisplay.appendChild(message);
+  
+  if (remainingAmount < 0) {
+    alert("Your amount is below 00!!!");
+    return;
   }
+  
 }
+
 // delete code here----------------------------------------------
 function deleteHandle(button) {
   const row = button.closest('tr');
